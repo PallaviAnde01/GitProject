@@ -27,4 +27,10 @@ public class StudentServiceImpl implements StudentService{
 		return list;
 	}
 
+	@Override
+	public Student viewById(Integer id) {
+		Student student = studentDao.findById(id).get();
+		return student;
+	}
+
 }

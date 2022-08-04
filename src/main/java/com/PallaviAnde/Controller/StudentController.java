@@ -23,6 +23,7 @@ public class StudentController {
 	public ResponseEntity<Object> saveData(@RequestBody Student student){
 		int id = studentService.saveData(student);
 		String msg="Your id is: "+id;
+		
 		return new ResponseEntity<Object>(msg,HttpStatus.OK);
 		}
 	
@@ -30,6 +31,17 @@ public class StudentController {
 	@GetMapping(value="/getData",produces="application/json")
 	public ResponseEntity<List<Student>> getAllData(){
 		List<Student> allData = studentService.getAllData();
+		
 		return new ResponseEntity<List<Student>>(allData,HttpStatus.OK);
 		}
+	
+//ViewById:
+	@GetMapping(value="/view",consumes="application/json",produces="application/json")
+	public ResponseEntity<Object> viewById(Student student){
+		Integer id = student.getId();
+		Student data = studentService.viewById(id);
+		
+		return new ResponseEntity<Object>(data,HttpStatus.OK);
+		}
+	
 }

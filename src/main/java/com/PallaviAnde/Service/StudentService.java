@@ -8,4 +8,5 @@ public interface StudentService {
 
 	public int saveData(Student student);
 	public List<Student> getAllData();
+	public Student viewById(Integer id);
 }
