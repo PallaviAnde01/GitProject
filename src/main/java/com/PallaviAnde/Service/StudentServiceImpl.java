@@ -1,5 +1,7 @@
 package com.PallaviAnde.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,12 @@ public class StudentServiceImpl implements StudentService{
 		Student save = studentDao.save(student);
 		Integer id = save.getId();
 		return id;
+	}
+
+	@Override
+	public List<Student> getAllData() {
+		List<Student> list = studentDao.findAll();
+		return list;
 	}
 
 }

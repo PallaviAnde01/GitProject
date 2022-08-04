@@ -1,5 +1,7 @@
 package com.PallaviAnde.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,5 +26,10 @@ public class StudentController {
 		return new ResponseEntity<Object>(msg,HttpStatus.OK);
 		}
 	
-
+//GetAllData:
+	@GetMapping(value="/getData",produces="application/json")
+	public ResponseEntity<List<Student>> getAllData(){
+		List<Student> allData = studentService.getAllData();
+		return new ResponseEntity<List<Student>>(allData,HttpStatus.OK);
+		}
 }
