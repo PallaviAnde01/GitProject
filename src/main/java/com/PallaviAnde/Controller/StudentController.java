@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.PallaviAnde.Model.Emplyoee;
 import com.PallaviAnde.Model.Student;
 import com.PallaviAnde.Service.StudentService;
 
@@ -43,5 +44,17 @@ public class StudentController {
 		
 		return new ResponseEntity<Object>(data,HttpStatus.OK);
 		}
+
+//DeleteById:
+	@GetMapping(value="/deleteId",consumes="application/json",produces="application/json")
+	public ResponseEntity<Object> deleteById(@RequestBody Student student){
+		Integer id = student.getId();
+		boolean byId =studentService.deleteById(id);
+		if(byId) {
+			return new ResponseEntity<Object>("Id Deleted",HttpStatus.OK);
+		}else {
+		return new ResponseEntity<Object>("Such Id not present...add correct Id",HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 }

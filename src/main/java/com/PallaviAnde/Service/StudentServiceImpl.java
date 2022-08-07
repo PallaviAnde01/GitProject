@@ -33,4 +33,15 @@ public class StudentServiceImpl implements StudentService{
 		return student;
 	}
 
+	@Override
+	public boolean deleteById(Integer id) {
+		boolean byId = studentDao.existsById(id);
+		if(byId) {
+			studentDao.deleteById(id);
+		return true;	
+		}else {
+		return false;
+		}
+	}
+
 }
